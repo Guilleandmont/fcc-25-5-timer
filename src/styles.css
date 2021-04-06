@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Sunflower:wght@300;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 50px;
+  background-image: linear-gradient(#33964f, #11304d);
+  font: 300 18px "Sunflower", serif;
+  color: #fcfcfc;
+}
+
+input {
+  color: #303630;
+}
+
+.timer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 220px;
+  width: 220px;
+  border: 10px solid #efe0c4;
+  border-radius: 50%;
+}
+
+.length-controls-container {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  margin: auto 0;
+}
+
+.length-controls {
+  text-align: left;
+}
+
+.length-controls > :not(last-child) {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+#break-length,
+#session-length {
+  font-size: 36px;
+}
+
+.increase-decrease {
+  display: flex;
+  justify-content: space-between;
+  width: 70px;
+}
+
+.arrow {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.arrow:active {
+  color: #efe0c4;
+}
+
+.session-controls {
+  display: flex;
+}
+
+.button {
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.button:active {
+  color: #efe0c4;
+}
+
+.light {
+  color: #efe0c4;
+}
+
+#time-left {
+  font-size: 72px;
+}
