@@ -3,7 +3,7 @@ const Input = ({ handleInput, task, isPaused, isWorking }) => {
     isPaused ? (
       <input
         value={task}
-        onChange={(event) => handleInput(event)}
+        onChange={(e) => handleInput(e)}
         placeholder="What are you working on?"
       ></input>
     ) : (

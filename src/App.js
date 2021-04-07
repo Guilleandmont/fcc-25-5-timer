@@ -5,11 +5,13 @@ import Timer from "./Timer";
 import LengthControls from "./LengthControls";
 import SessionControls from "./SessionControls";
 
+const audio = document.querySelector("#beep");
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      timeLeft: 15, //In seconds
+      timeLeft: 5, //In seconds
       isPaused: true,
       isWorking: true,
       task: "",
@@ -20,7 +22,9 @@ export default class App extends React.Component {
     this.handlePause = this.handlePause.bind(this);
     this.handleRestLength = this.handleRestLength.bind(this);
     this.handleSessionLength = this.handleSessionLength.bind(this);
+    this.handleReset = this.handleReset.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.handleBeep = this.handleBeep.bind(this);
   }
 
   countdown = () => {
@@ -29,8 +33,10 @@ export default class App extends React.Component {
     }));
     if (this.state.timeLeft < 0) {
       this.setState((state) => ({
-        timeLeft: state.restLength * 60
+        timeLeft: state.restLength * 60,
+        isWorking: !state.isWorking
       }));
+      this.handleBeep();
     }
   };
 
@@ -47,6 +53,9 @@ export default class App extends React.Component {
   }
 
   handleRestLength(value) {
+    if (!this.state.isPaused) {
+      return;
+    }
     if (this.state.restLength >= 60 && value > 0) {
       return;
     }
@@ -59,6 +68,9 @@ export default class App extends React.Component {
   }
 
   handleSessionLength(value) {
+    if (!this.state.isPaused) {
+      return;
+    }
     if (this.state.sessionLength >= 60 && value > 0) {
       return;
     }
@@ -71,10 +83,25 @@ export default class App extends React.Component {
     }));
   }
 
+  handleReset() {
+    this.handlePause();
+    this.setState({
+      timeLeft: 1500,
+      restLength: 5,
+      sessionLength: 25,
+      isWorking: true
+    });
+    audio.load();
+  }
+
   handleInput(e) {
     this.setState({
-      task: e.value
+      task: e.target.value
     });
+  }
+
+  handleBeep() {
+    audio.play();
   }
 
   render() {
@@ -97,6 +124,7 @@ export default class App extends React.Component {
           isPaused={this.state.isPaused}
           handlePlay={this.handlePlay}
           handlePause={this.handlePause}
+          handleReset={this.handleReset}
         />
         <audio
           src="https://assets.mixkit.co/sfx/preview/mixkit-repeating-arcade-beep-1084.mp3"

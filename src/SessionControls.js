@@ -1,6 +1,11 @@
 import { FaRedoAlt, FaPlayCircle, FaPauseCircle } from "react-icons/fa";
 
-const SessionControls = ({ isPaused, handlePlay, handlePause }) => {
+const SessionControls = ({
+  isPaused,
+  handlePlay,
+  handlePause,
+  handleReset
+}) => {
   return (
     <div className="session-controls">
       <div id="start_stop">
@@ -10,7 +15,7 @@ const SessionControls = ({ isPaused, handlePlay, handlePause }) => {
           <FaPauseCircle className="button" onClick={() => handlePause()} />
         )}
       </div>
-      <FaRedoAlt className="button" id="reset" />
+      <FaRedoAlt className="button" id="reset" onClick={() => handleReset()} />
     </div>
   );
 };
