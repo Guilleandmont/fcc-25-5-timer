@@ -10,7 +10,7 @@ const Timer = ({ timeLeft }) => {
   }
 
   return (
-    <div class="timer-container">
+    <div className="timer-container">
       <h1 id="time-left">{`${toMinutes(timeLeft)}:${toSeconds(timeLeft)}`}</h1>
     </div>
   );
