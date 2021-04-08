@@ -56,33 +56,55 @@ input {
 
 .increase-decrease {
   display: flex;
-  justify-content: space-between;
-  width: 70px;
+  justify-content: space-evenly;
+  width: 100px;
+}
+
+.length-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-style: none;
+  border-radius: 50%;
+  background-color: white;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+}
+
+.length-btn:active {
+  background-color: #efe0c4;
 }
 
 .arrow {
   cursor: pointer;
   width: 24px;
   height: 24px;
-}
-
-.arrow:active {
-  color: #efe0c4;
+  color: #303630;
 }
 
 .session-controls {
   display: flex;
+  justify-content: space-between;
+  width: 125px;
 }
 
-.button {
-  width: 40px;
-  height: 40px;
-  margin: 0 10px;
+.session-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-style: none;
+  border-radius: 50%;
+  background-color: white;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
 }
 
-.button:active {
-  color: #efe0c4;
+.session-icons {
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
 }
 
 .light {

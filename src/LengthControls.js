@@ -13,17 +13,22 @@ const LengthControls = ({
           Rest time
         </p>
         <p id="break-length">{`${rest}:00`}</p>
+
         <div className="increase-decrease">
-          <FaChevronDown
+          <button
             id="break-decrement"
-            className="arrow"
+            className="length-btn"
             onClick={() => handleRestLength(-1)}
-          />
-          <FaChevronUp
+          >
+            <FaChevronDown className="arrow" />
+          </button>
+          <button
             id="break-increment"
-            className="arrow"
+            className="length-btn"
             onClick={() => handleRestLength(1)}
-          />
+          >
+            <FaChevronUp className="arrow" />
+          </button>
         </div>
       </div>
       <div className="length-controls">
@@ -32,16 +37,20 @@ const LengthControls = ({
         </p>
         <p id="session-length">{`${session}:00`}</p>
         <div className="increase-decrease">
-          <FaChevronDown
+          <button
             id="session-decrement"
-            className="arrow"
+            className="length-btn"
             onClick={() => handleSessionLength(-1)}
-          />
-          <FaChevronUp
+          >
+            <FaChevronDown className="arrow" />
+          </button>
+          <button
             id="session-increment"
-            className="arrow"
+            className="length-btn"
             onClick={() => handleSessionLength(1)}
-          />
+          >
+            <FaChevronUp className="arrow" />
+          </button>
         </div>
       </div>
     </div>

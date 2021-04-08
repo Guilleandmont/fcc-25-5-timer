@@ -5,13 +5,11 @@ import Timer from "./Timer";
 import LengthControls from "./LengthControls";
 import SessionControls from "./SessionControls";
 
-const audio = document.querySelector("#beep");
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      timeLeft: 5, //In seconds
+      timeLeft: 1500, //In seconds
       isPaused: true,
       isWorking: true,
       task: "",
@@ -28,16 +26,24 @@ export default class App extends React.Component {
   }
 
   countdown = () => {
+    if (this.state.timeLeft === 0) {
+      if (this.state.isWorking) {
+        this.setState((state) => ({
+          timeLeft: state.restLength * 60 + 1,
+          isWorking: !state.isWorking
+        }));
+      } else {
+        this.setState((state) => ({
+          timeLeft: state.sessionLength * 60 + 1,
+          isWorking: !state.isWorking
+        }));
+      }
+      this.handleBeep();
+    }
+
     this.setState((state) => ({
       timeLeft: state.timeLeft - 1
     }));
-    if (this.state.timeLeft < 0) {
-      this.setState((state) => ({
-        timeLeft: state.restLength * 60,
-        isWorking: !state.isWorking
-      }));
-      this.handleBeep();
-    }
   };
 
   handlePlay() {
@@ -91,6 +97,7 @@ export default class App extends React.Component {
       sessionLength: 25,
       isWorking: true
     });
+    const audio = document.querySelector("#beep");
     audio.load();
   }
 
@@ -101,6 +108,7 @@ export default class App extends React.Component {
   }
 
   handleBeep() {
+    const audio = document.querySelector("#beep");
     audio.play();
   }
 

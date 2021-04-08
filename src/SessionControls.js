@@ -8,14 +8,20 @@ const SessionControls = ({
 }) => {
   return (
     <div className="session-controls">
-      <div id="start_stop">
+      <button
+        className="session-btn"
+        id="start_stop"
+        onClick={isPaused ? () => handlePlay() : () => handlePause()}
+      >
         {isPaused ? (
-          <FaPlayCircle className="button" onClick={() => handlePlay()} />
+          <FaPlayCircle className="session-icons" />
         ) : (
-          <FaPauseCircle className="button" onClick={() => handlePause()} />
+          <FaPauseCircle className="session-icons" />
         )}
-      </div>
-      <FaRedoAlt className="button" id="reset" onClick={() => handleReset()} />
+      </button>
+      <button className="session-btn" id="reset" onClick={() => handleReset()}>
+        <FaRedoAlt className="session-icons" />
+      </button>
     </div>
   );
 };
